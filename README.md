@@ -1,8 +1,9 @@
-# yolo_to_coco
-Convert yolo format to coco format
-
-
-运行步骤：
-1、将要转化的数据放到当前目录下，在当前目录创建文件夹Annotations。在yolotovoc.py主函数中更改路径，运行yolotovoc.py。
-  成功运行后，Annotations里会生成相应的xml格式数据。
-2、把所有图片复制到Annotations中，voctococo.py中的train_ratio控制train和val的比例，train_ratio=1是全部生成为train数据。运voctococo.py即可。
+Step 1: Convert YOLO to VOC Format
+Place the data you want to convert in the current directory.
+Create a folder named Annotations in the current directory.
+Modify the path in the main function of yolotovoc.py to match your directory structure.
+Run yolotovoc.py. Upon successful execution, corresponding XML files in VOC format will be generated in the Annotations folder.
+Step 2: Convert VOC to COCO Format
+Copy all images into the Annotations folder.
+In voctococo.py, the train_ratio variable controls the ratio of training to validation data. Setting train_ratio to 1 will generate all data as training data.
+Run voctococo.py to complete the conversion.
