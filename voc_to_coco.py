@@ -1,4 +1,4 @@
-# coding:utf-8
+# Annotations folder needs to contains the images and XML labels
 
 import os
 import glob
