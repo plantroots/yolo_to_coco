@@ -78,8 +78,10 @@ def convert(xml_list, json_file):
             ymin = int(float(get_and_check(bndbox, "ymin", 1).text))
             xmax = int(float(get_and_check(bndbox, "xmax", 1).text))
             ymax = int(float(get_and_check(bndbox, "ymax", 1).text))
+
             assert xmax > xmin, "xmax <= xmin, {}".format(line)
             assert ymax > ymin, "ymax <= ymin, {}".format(line)
+
             o_width = abs(xmax - xmin)
             o_height = abs(ymax - ymin)
             ann = {
