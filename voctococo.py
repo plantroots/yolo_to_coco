@@ -121,7 +121,7 @@ def convert(xml_list, json_file):
 
 
 if __name__ == "__main__":
-    classes = ["person"]
+    classes = ["closed", "opened"]
     pre_define_categories = {}
     for i, cls in enumerate(classes):
         pre_define_categories[cls] = i + 1
@@ -129,7 +129,7 @@ if __name__ == "__main__":
     only_care_pre_define_categories = True
     # only_care_pre_define_categories = False
 
-    train_ratio = 1
+    train_ratio = 0.8
     save_json_train = "instances_train2014.json"
     save_json_val = "instances_val2014.json"
     xml_dir = "Annotations"
