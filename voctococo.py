@@ -11,8 +11,6 @@ import xml.etree.ElementTree as ET
 
 
 path2 = "."
-
-
 START_BOUNDING_BOX_ID = 1
 
 
@@ -35,12 +33,13 @@ def get_and_check(root, name, length):
 
 
 def convert(xml_list, json_file):
+
     json_dict = {"images": [], "type": "instances", "annotations": [], "categories": []}
     categories = pre_define_categories.copy()
     bnd_id = START_BOUNDING_BOX_ID
     all_categories = {}
+
     for index, line in enumerate(xml_list):
-        # print("Processing %s"%(line))
         xml_f = line
         tree = ET.parse(xml_f)
         root = tree.getroot()
@@ -56,10 +55,9 @@ def convert(xml_list, json_file):
             "width": width,
             "id": image_id,
         }
+
         json_dict["images"].append(image)
-        ## Cruuently we do not support segmentation
-        #  segmented = get_and_check(root, 'segmented', 1).text
-        #  assert segmented == '0'
+
         for obj in get(root, "object"):
             category = get_and_check(obj, "name", 1).text
             if category in all_categories:
@@ -125,7 +123,6 @@ if __name__ == "__main__":
     pre_define_categories = {}
     for i, cls in enumerate(classes):
         pre_define_categories[cls] = i + 1
-    # pre_define_categories = {'a1': 1, 'a3': 2, 'a6': 3, 'a9': 4, "a10": 5}
     only_care_pre_define_categories = True
     # only_care_pre_define_categories = False
 
@@ -149,9 +146,11 @@ if __name__ == "__main__":
     if os.path.exists(path2 + "/annotations"):
         shutil.rmtree(path2 + "/annotations")
     os.makedirs(path2 + "/annotations")
+
     if os.path.exists(path2 + "/images/train2014"):
         shutil.rmtree(path2 + "/images/train2014")
     os.makedirs(path2 + "/images/train2014")
+
     if os.path.exists(path2 + "/images/val2014"):
         shutil.rmtree(path2 + "/images/val2014")
     os.makedirs(path2 + "/images/val2014")
@@ -167,8 +166,10 @@ if __name__ == "__main__":
         img = xml[:-4] + ".jpg"
         f2.write(os.path.basename(xml)[:-4] + "\n")
         shutil.copyfile(img, path2 + "/images/val2014/" + os.path.basename(img))
+
     f1.close()
     f2.close()
+
     print("-------------------------------")
     print("train number:", len(xml_list_train))
     print("val number:", len(xml_list_val))
