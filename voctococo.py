@@ -1,7 +1,5 @@
 # coding:utf-8
 
-# pip install lxml
-
 import os
 import glob
 import json
