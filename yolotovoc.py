@@ -1,8 +1,9 @@
+import cv2
+import pprint
+
+from xml.dom.minidom import parseString
 from xml.dom.minidom import Document
 from lxml.etree import Element, SubElement, tostring
-import pprint
-from xml.dom.minidom import parseString
-import cv2
 
 
 class XmlMaker:
@@ -62,7 +63,7 @@ class XmlMaker:
                 node_ymax = SubElement(node_bndbox, "ymax")
                 node_ymax.text = str(y_max)
 
-            xml = tostring(node_root, pretty_print=True)  # 格式化显示，该换行的换行
+            xml = tostring(node_root, pretty_print=True)
             xml_name = jpg.split("/")[-1][:-4] + ".xml"
             print(xml_name)
             with open(self.xmlPath + "/" + xml_name, "wb") as f:
