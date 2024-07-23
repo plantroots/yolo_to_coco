@@ -1,13 +1,13 @@
 import fiftyone as fo
 
 
-dataset_dir = "."
+IMAGES_DIR = "/home/plantroot/Code/yolo_to_coco/images/train2014"
+LABELS_DIR = "/home/plantroot/Code/yolo_to_coco/instances_train2014.json"
 
 dataset = fo.Dataset.from_dir(
-    dataset_dir=dataset_dir,
     dataset_type=fo.types.COCODetectionDataset,
-    data_path="dataset/data",
-    labels_path="dataset/annotations/train.json",
+    data_path=IMAGES_DIR,
+    labels_path=LABELS_DIR,
 )
 
 print(dataset.head())

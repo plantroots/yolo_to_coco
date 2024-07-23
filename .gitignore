@@ -1,3 +1,7 @@
 /Annotations
 /images
 /dataset
+test.txt
+train.txt
+instances_train2014.json
+instances_val2014.json
