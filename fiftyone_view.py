@@ -1,5 +1,3 @@
-### >fiftyone app launch ###
-
 import fiftyone as fo
 
 
